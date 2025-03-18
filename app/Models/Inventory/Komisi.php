@@ -10,7 +10,7 @@ class Komisi extends Model
         'id',
         'id_pegawai',
         'id_penjualan',
-        'id_barang',
+        'kode_barang',
         'komisi',
     ];
 
@@ -28,6 +28,6 @@ class Komisi extends Model
     }
 
     public function barang(){
-        return $this->belongsTo(Barang::class,'id_barang','id');
+        return $this->belongsTo(Barang::class,'kode_barang','id');
     }
 }

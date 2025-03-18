@@ -31,6 +31,6 @@ class Forum extends Model
     }
 
     public function barang(){
-        return $this->belongsTo(Barang::class,'id_barang','id');
+        return $this->belongsTo(Barang::class,'kode_barang','id');
     }
 }

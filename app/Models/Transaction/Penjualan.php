@@ -11,7 +11,7 @@ class Penjualan extends Model
     protected $fillable = [
         'id',
         'id_pelanggan',
-        'id_penitip',
+        'list_penitip',
         'list_barang',
         'alamat',
         'total',
@@ -26,9 +26,9 @@ class Penjualan extends Model
         'updated_at',
     ];
 
-    public function pelanggan(){
-        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id');
-    }
+    // public function pelanggan(){
+    //     return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id');
+    // }
 
     public function penitip(){
         return $this->belongsTo(Penitip::class, 'id_penitip', 'id');
