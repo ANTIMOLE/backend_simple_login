@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('suvenirs', function (Blueprint $table) {
-            $table->string('id')->primary();
+        Schema::create('organisasis', function (Blueprint $table) {
+            $table->string('id_organisasi')->primary();
             $table->string('nama');
-            $table->integer('jumlah_poin');
-            $table->string('gambar');
-            $table->integer('stok');
+            $table->string('email')->unique();
+            $table->string('alamat');
+            $table->boolean('verified');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('suvenirs');
+        Schema::dropIfExists('penerimas');
     }
 };

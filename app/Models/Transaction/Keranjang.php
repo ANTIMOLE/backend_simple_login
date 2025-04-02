@@ -6,13 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Keranjang extends Model
 {
-    protected $table = 'keranjang';
+    protected $table = 'keranjangs';
 
     protected $fillable = [
-        'id',
+        'id_keranjang',
         'id_pelanggan',
-        'list_barang',
-        'total',
     ];
 
     protected $hidden = [
@@ -21,6 +19,10 @@ class Keranjang extends Model
     ];
 
     public function pelanggan(){
-        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id');
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
+    public function keranjangBarang(){
+        return $this->hasMany(KeranjangBarang::class, 'id_keranjang', 'id_keranjang');
     }
 }

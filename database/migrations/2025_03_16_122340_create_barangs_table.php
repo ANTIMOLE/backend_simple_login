@@ -13,24 +13,23 @@ return new class extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->string('kode_barang')->primary();
-            $table->foreignId('id_penitip')->constrained('penitips');
-            $table->integer('id_kategori')->constrained('kategoris');
-            $table->integer('id_kondisi')->constrained('kondisis');
+            $table->string('id_penitipan');
+            $table->integer('id_kategori');
             $table->string('nama');
-            $table->string('gambar');
             $table->string('ukuran');
             $table->text('deskripsi');
             $table->string('hunter');
+            $table->string('gambar');
+            $table->double('berat');
+            $table->string('kondisi');
             $table->integer('masa_penitipan');
             $table->tinyInteger('perpanjangan');
-            $table->flodoubleat('berat');
             $table->double('harga'); 
-            $table->enum('status', ['Tersedia', 'Terjual']);
+            $table->string('status');
             $table->timestamps();
             
-            $table->foreign('id_penitip')->references('id')->on('penitips');
-            $table->foreign('id_kategori')->references('id')->on('kategoris');
-            $table->foreign('id_kondisi')->references('id')->on('kondisis');
+            $table->foreign('id_penitipan')->references('id_penitipan')->on('penitipans')->onDelete('cascade');
+            $table->foreign('id_kategori')->references('id_kategori')->on('kategoris')->onDelete('cascade');
         });
 
 

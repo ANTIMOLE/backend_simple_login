@@ -9,9 +9,9 @@ class Klaim extends Model
     protected $table = 'klaim';
 
     protected $fillable = [
-        'id',
+        'id_klaim',
         'id_pelanggan',
-        'id_suvenir',
+        'id_merchandise',
         'total_poin',
         'status',
     ];
@@ -22,12 +22,14 @@ class Klaim extends Model
     ];
 
     public function pelanggan(){
-        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id');
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id_pelanggan');
     }
 
-    public function suvenir(){
-        return $this->belongsTo(Suvenir::class, 'id_suvenir', 'id');
+    public function merchandise(){
+        return $this->belongsTo(Merchandise::class, 'id_merchandise', 'id_merchandise');
     }
+
+    
 
     
 }

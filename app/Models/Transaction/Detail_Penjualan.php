@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Detail_Penjualan extends Model
 {
-    protected $table = 'detail_penjualan';
+    protected $table = 'detail__penjualans';
 
     protected $fillable = [
-        'id',
+        'id_detail_penjualan',
         'id_penjualan',
         'no_nota',
         'komisi',
@@ -24,6 +24,6 @@ class Detail_Penjualan extends Model
     ];
 
     public function penjualan(){
-        return $this->belongsTo(Penjualan::class,'id_penjualan','id');
+        return $this->belongsTo(Penjualan::class,'id_penjualan','id_penjualan');
     }
 }

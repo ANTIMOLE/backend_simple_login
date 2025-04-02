@@ -10,9 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Pelanggan extends Model
 {
     use HasApiTokens, HasFactory;
-    protected $table = 'Pelanggan';
+    protected $table = 'Pelanggans';
     protected $fillable = [
-        'id',
+        'id_pelanggan',
         'nama',
         'email',
         'verified',
@@ -23,7 +23,6 @@ class Pelanggan extends Model
     ];
 
     protected $hidden = [
-        'verified_at',
         'created_at',
         'updated_at',
     ];
@@ -37,11 +36,19 @@ class Pelanggan extends Model
         'verified' => 'boolean',
     ];
 
-    // public function penitip(){
-    //     return $this->hasMany(Penitip::class, 'id_pelanggan', 'id');
-    // }
+    public function penjualan(){
+        return $this->hasMany(Penjualan::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
+    public function pertanyaan(){
+        return $this->hasMany(Pertanyaan::class, 'id_pelanggan', 'id_pelanggan');
+    }
 
     public function alamat(){
-        return $this->hasOne(Alamat::class, 'id_pelanggan', 'id');
+        return $this->hasOne(Alamat::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
+    public function keranjang(){
+        return $this->hasOne(Keranjang::class, 'id_pelanggan', 'id_pelanggan');
     }
 }

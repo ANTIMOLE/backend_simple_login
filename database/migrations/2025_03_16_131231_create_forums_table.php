@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('forums', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_barang')->constrained('barangs');
-            $table->string('title');
+            $table->id('id_forum');
+            $table->string('kode_barang');  
+            $table->string('judul');
             $table->string('deskripsi');
             $table->timestamps();
 
-            $table->foreign('kode_barang')->references('kode_barang')->on('barangs');
+            $table->foreign('kode_barang')->references('kode_barang')->on('barangs')->onDelete('cascade');
+
+           
         });
     }
 

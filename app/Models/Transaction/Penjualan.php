@@ -9,15 +9,15 @@ class Penjualan extends Model
     protected $table = 'penjualan';
 
     protected $fillable = [
-        'id',
-        'id_pelanggan',
-        'list_penitip',
-        'list_barang',
-        'alamat',
+        'no_penjualan',
         'total',
+        'list_barang',
+        'bukti_transfer',
+        'alamat',
         'status',
         'tipe',
-        'bukti_transfer',
+        'id_pelanggan',
+        'id_penitip',
         
     ];
 
@@ -26,11 +26,27 @@ class Penjualan extends Model
         'updated_at',
     ];
 
-    // public function pelanggan(){
-    //     return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id');
-    // }
+    public function pelanggan(){
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id_pelanggan');
+    }
 
     public function penitip(){
-        return $this->belongsTo(Penitip::class, 'id_penitip', 'id');
+        return $this->belongsTo(Penitip::class, 'id_penitip', 'id_penitip');
+    }
+
+    public function komisi(){
+        return $this->hasMany(Komisi::class, 'no_penjualan', 'no_penjualan');
+    }
+
+    public function detailPenjualan(){
+        return $this->hasOne(Detail_Penjualan::class, 'no_penjualan', 'no_penjualan');
+    }
+
+    public function pengambilan(){
+        return $this->hasOne(Pengambilan::class, 'no_penjualan', 'no_penjualan');
+    }
+
+    public function pengiriman(){
+        return $this->hasOne(Pengiriman::class, 'no_penjualan', 'no_penjualan');
     }
 }

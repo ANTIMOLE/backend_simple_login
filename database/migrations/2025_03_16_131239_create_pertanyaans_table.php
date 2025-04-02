@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pertanyaans', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_forum')->constrained('forums');
-            $table->string('pertanyaan');
+            $table->id('id_pertanyaan');
+            $table->foreignId('id_forum')->constrained('forums')->onDelete('cascade');
+            $table->string('id_pelanggan');
+            $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggans')->onDelete('cascade');
+            $table->string('text_pertanyaan');
             $table->timestamps();
 
-            $table->foreign('id_forum')->references('id')->on('forums');
+            
         });
     }
 

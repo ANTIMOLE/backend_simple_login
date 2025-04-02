@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Suvenir extends Model
+class Merchandise extends Model
 {
-    protected $table = 'suvenir';
+    protected $table = 'merchandises';
 
     protected $fillable = [
-        'id',
+        'id_merchandise',
         'nama',
         'jumlah_poin',
         'gambar',
@@ -20,4 +20,9 @@ class Suvenir extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function klaim()
+    {
+        return $this->hasMany(Klaim::class, 'id_merchandise', 'id_merchandise');
+    }
 }

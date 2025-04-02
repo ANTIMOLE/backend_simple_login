@@ -9,23 +9,23 @@ class Barang extends Model
 {
     use HasFactory;
 
-    protected $table = 'barang';
+    protected $table = 'barangs';
 
     protected $fillable = [
         'kode_barang',
-        'id_penitip',
+        'id_penitipan',
         'id_kategori',
-        'kondisi',
-        'gambar',
         'nama',
         'ukuran',
         'deskripsi',
         'hunter',
         'berat',
+        'kondisi',
         'masa_penitipan',
         'perpanjangan',
         'harga',
         'status',
+        'gambar',
     ];
 
     protected $hidden = [
@@ -33,16 +33,19 @@ class Barang extends Model
         'updated_at',
     ];
 
-    public function penitip()
-    {
-        return $this->belongsTo(Penitip::class, 'id_penitip', 'id');
+    public function penitipan(){
+        return $this->belongsTo(Penitipan::class, 'id_penitipan', 'id_penitipan');
     }
 
-    public function barang(){
-        return $this->hasMany(Barang::class, 'kode_barang', 'kode_barang');
+    public function keranjangBarang(){
+        return $this->hasMany(KeranjangBarang::class, 'kode_barang', 'kode_barang');
+    }
+
+    public function forum(){
+        return $this->hasOne(Forum::class, 'kode_barang', 'kode_barang');
     }
 
     public function kategori(){
-        return $this->belongsTo(Kategori::class, 'id_kategori', 'id');
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
     }
 }

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('barang__donasis', function (Blueprint $table) {
-            $table->string('kode_donasi')->primary();
-            $table->integer('id_kategori')->constrained('kategoris');
+            $table->string('id_barang_donasi')->primary();
+            $table->integer('id_kategori')->constrained('kategoris')->onDelete('cascade');
             $table->string('nama');
             $table->double('ukuran');
             $table->string('deskripsi');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->double('berat');
             $table->timestamps();
 
-            $table->foreign('id_kategori')->references('id')->on('kategoris');
+           
         });
     }
 

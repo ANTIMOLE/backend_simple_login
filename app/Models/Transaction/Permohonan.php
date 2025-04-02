@@ -9,9 +9,9 @@ class Permohonan extends Model
     protected $table = 'permohonan';
 
     protected $fillable = [
-        'id',
-        'id_penerima',
-        'kategori_barang',
+        'id-permohonan',
+        'id_organisasi',
+        'catatan',
     ];
 
     protected $hidden = [
@@ -20,7 +20,12 @@ class Permohonan extends Model
     ];
 
     public function penerima(){
-        return $this->belongsTo(Penerima::class, 'id_penerima', 'id');
+        return $this->belongsTo(Organisasi::class, 'id_organisasi', 'id_organisasi');
+    }
+
+    public function donasi()
+    {
+        return $this->hasMany(Donasi::class, 'id_permohonan', 'id_permohonan');
     }
 
 }

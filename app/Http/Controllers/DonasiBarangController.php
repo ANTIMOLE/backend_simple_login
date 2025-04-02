@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Suvenir;
+use App\Models\donasi_barang;
 use Illuminate\Http\Request;
 
-class SuvenirController extends Controller
+class DonasiBarangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class SuvenirController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Suvenir $suvenir)
+    public function show(donasi_barang $donasi_barang)
     {
         //
     }
@@ -34,7 +34,7 @@ class SuvenirController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Suvenir $suvenir)
+    public function update(Request $request, donasi_barang $donasi_barang)
     {
         //
     }
@@ -42,7 +42,7 @@ class SuvenirController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Suvenir $suvenir)
+    public function destroy(donasi_barang $donasi_barang)
     {
         //
     }

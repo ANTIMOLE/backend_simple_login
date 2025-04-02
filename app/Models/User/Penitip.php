@@ -10,20 +10,19 @@ class Penitip extends Model
 {
     use HasApiTokens, HasFactory;
 
-    protected $table = 'penitip';
+    protected $table = 'penitips';
 
     protected $fillable = [
-        'id',
+        'id_penitip',
         'nama',
-        'email',
-        'verified',
-        'tanggal_lahir',
-        'noTelp',
-        'poin',
-        'password',
         'nomer_induk_penduduk',
-        'barang_titipan',
+        'email',
+        'password',
+        'poin',
         'rating_total',
+        'barang_terjual',
+        'tanggal_lahir',
+        'verified',
     ];
 
     protected $hidden = [
@@ -31,11 +30,11 @@ class Penitip extends Model
         'updated_at',
     ];
 
-    public function customer (){
-        return $this->belongsTo(Pegawai::class, 'id_pelanggan', 'id');
-    } 
-
     public function rating(){
-        return $this->hasMany(Rating::class, 'id_penitip', 'id');
+        return $this->hasMany(Rating::class, 'id_penitip', 'id_penitip');
+    }
+
+    public function penitipan(){
+        return $this->hasMany(Penitipan::class, 'id_penitip', 'id_penitip');
     }
 }

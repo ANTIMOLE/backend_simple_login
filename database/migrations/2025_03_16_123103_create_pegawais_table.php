@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pegawais', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->string('id_pegawai')->primary();
             $table->string('nama');
             $table->string('email')->unique();
+            $table->string('password');
+            $table->string('id_jabatan');
+            $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatans')->onDelete('cascade');
+            
             $table->date('tanggal_lahir');
             $table->string('noTelp');
             $table->timestamps();

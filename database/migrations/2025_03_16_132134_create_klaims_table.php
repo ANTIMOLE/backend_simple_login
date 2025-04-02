@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('klaims', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('id_pelanggan')->references('id')->on('pelanggans');
-            $table->foreign('id_suvenir')->references('id')->on('suvenirs');
+            $table->id('id_klaim');
+            $table->string('id_pelanggan');
+            $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggans')->onDelete('cascade');
+            $table->foreignId('id_merchandise')->constrained('merchandises')->onDelete('cascade');
             $table->double('total_poin');
             $table->tinyInteger('status');
             $table->timestamps();
 
-            $table->foreign('id_pelanggan')->references('id')->on('pelanggans');
-            $table->foreign('id_suvenir')->references('id')->on('suvenirs');
+            
         });
     }
 

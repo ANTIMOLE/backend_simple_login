@@ -10,10 +10,10 @@ class Forum extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
+        'id_forum',
         'kode_barang',
-        'title',
-        'description',
+        'judul',
+        'deskripsi',
     ];
 
     protected $hidden = [
@@ -23,14 +23,14 @@ class Forum extends Model
 
 
     public function pertanyaan(){
-        return $this->hasMany(Pertanyaan::class,'id_forum','id');
+        return $this->hasMany(Pertanyaan::class,'id_forum','id_forum');
     }
 
     public function  jawaban(){
-        return $this->hasMany(Jawaban::class,'id_forum','id');
+        return $this->hasMany(Jawaban::class,'id_forum','id_forum');
     }
 
     public function barang(){
-        return $this->belongsTo(Barang::class,'kode_barang','id');
+        return $this->belongsTo(Barang::class,'kode_barang','kode_barang');
     }
 }

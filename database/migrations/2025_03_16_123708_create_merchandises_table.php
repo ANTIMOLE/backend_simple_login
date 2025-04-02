@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penitipans', function (Blueprint $table) {
-            $table->id();
-
-            //MO PAKE TABEL PENITIPAN GA ??
+        Schema::create('merchandises', function (Blueprint $table) {
+            $table->id('id_merchandise');
+            $table->string('nama');
+            $table->integer('jumlah_poin');
+            $table->string('gambar');
+            $table->integer('stok');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penitipans');
+        Schema::dropIfExists('merchandises');
     }
 };

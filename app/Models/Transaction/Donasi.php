@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donasi extends Model
 {
-    protected $table = 'donasi';
+    protected $table = 'donasis';
 
     protected $fillable = [
-        'id',
-        'id_penerima',
-        'id_barang_donasi',
-        'tanggal_donasi',
-        'status',
+        'id_donasi',
+        'id_permohonan',
     ];
 
     protected $hidden = [
@@ -21,11 +18,14 @@ class Donasi extends Model
         'updated_at',
     ];
 
-    public function penerima(){
-        return $this->belongsTo(Penerima::class, 'id_penerima', 'id');
+    public function permohonan()
+    {
+        return $this->belongsTo(Permohonan::class, 'id_permohonan', 'id_permohonan');
     }
 
-    public function barang_donasi(){
-        return $this->belongsTo(Barang_Donasi::class, 'id_barang_donasi', 'id');
+    public function donasiBarang()
+    {
+        return $this->hasMany(Donasi_Barang::class, 'id_donasi', 'id_donasi');
     }
+
 }

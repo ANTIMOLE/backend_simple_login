@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Penerima extends Model
+class Organisasi extends Model
 {
-    protected $table = 'penerima';
+    protected $table = 'organisasis';
 
     protected $fillable = [
-        'id',
+        'id_organisasi',
         'nama',
         'email',
-        'no_Telp',
-        'lokasi',
+        'alamat',
+        'verified',
     ];
 
     protected $hidden = [
@@ -22,6 +22,6 @@ class Penerima extends Model
     ];
 
     public function permohonan(){
-        return $this->hasMany(Permohonan::class, 'id_penerima', 'id');
+        return $this->hasMany(Permohonan::class, 'id_organisasi', 'id_organisasi');
     }
 }

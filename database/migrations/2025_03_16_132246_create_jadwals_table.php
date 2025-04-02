@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jadwals', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_pegawai')->constrained('pegawais');
+            $table->id('id_jadwal');
             $table->string('tipe');
             $table->date('tanggal');
             $table->timestamps();
 
-            $table->foreign('id_pegawai')->references('id')->on('pegawais');
+            
         });
     }
 

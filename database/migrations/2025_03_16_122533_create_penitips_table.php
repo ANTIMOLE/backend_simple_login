@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('penitips', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('id_pelanggan')->constrained('pelanggans');
+            $table->string('id_penitip')->primary();
+            $table->string('nama');
             $table->string('nomer_induk_penduduk');
-            $table->string('barang_titipan');
-            $table->double('rating_total');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->integer('poin')->default(0);
+            $table->double('rating_total')->default(0.0);
+            $table->integer('barang_terjual')->default(0);
+            $table->date('tanggal_lahir');
+            $table->boolean('verified')->default(false);
             $table->timestamps();
-
-            $table->foreign('id_pelanggan')->references('id')->on('pelanggans');
         });
     }
 

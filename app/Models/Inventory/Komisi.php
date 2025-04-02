@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Komisi extends Model
 {
+    protected $table = 'komisis';
     protected $fillable = [
-        'id',
+        'id_komisi',
         'id_pegawai',
-        'id_penjualan',
+        'no_penjualan',
         'kode_barang',
         'komisi',
     ];
@@ -20,14 +21,14 @@ class Komisi extends Model
     ];
 
     public function pegawai(){
-        return $this->belongsTo(Pegawai::class,'id_pegawai','id');
+        return $this->belongsTo(Pegawai::class,'id_pegawai','id_pegawai');
     }
 
     public function penjualan(){
-        return $this->belongsTo(Penjualan::class,'id_penjualan','id');
+        return $this->belongsTo(Penjualan::class,'no_penjualan','no_penjualan');
     }
 
     public function barang(){
-        return $this->belongsTo(Barang::class,'kode_barang','id');
+        return $this->belongsTo(Barang::class,'kode_barang','kode_barang');
     }
 }

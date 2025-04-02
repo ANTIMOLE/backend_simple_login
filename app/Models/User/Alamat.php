@@ -9,7 +9,7 @@ class Alamat extends Model
     protected $table = 'alamat';
 
     protected $fillable = [
-        'id',
+        'id_alamat',
         'id_pelanggan',
         'detail_alamat',
         'status',
@@ -21,6 +21,6 @@ class Alamat extends Model
     ];
 
     public function pelanggan(){
-        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id');
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id_pelanggan');
     }
 }

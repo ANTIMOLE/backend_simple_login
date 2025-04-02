@@ -12,15 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('donasis', function (Blueprint $table) {
-            $table->id();
-            $table->string('id_penerima')->constraint('penerimas');
-            $table->string('id_barang_donasi')->constrained('barang_donasis');
-            $table->date('tanggal_donasi');
-            $table->enum('status', ['Diterima', 'Belum Diterima']);
+            $table->id('id_donasi');
+            $table->foreignId('id_permohonan')->constrained('permohonans')->onDelete('cascade');
+           
             $table->timestamps();
 
-            $table->foreign('id_penerima')->references('id')->on('penerimas');
-            $table->foreign('id_barang_donasi')->references('id')->on('barang_donasis');
+           
         });
     }
 

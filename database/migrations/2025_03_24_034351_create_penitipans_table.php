@@ -11,19 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penjualans', function (Blueprint $table) {
-            $table->id('no_penjualan');
-            $table->string('id_pegawai');
-            $table->string('id_penitip');
+        Schema::create('penitipans', function (Blueprint $table) {
+            $table->string('id_penitipan')->primary();
             $table->string('list_barang');
-            $table->string('status');
-            $table->string('tipe');
-            $table->string('alamat');
-            $table->string('bukti_transfer');
+            $table->string('status_penitipan');
+            $table->string('id_penitip');
+            $table->string('id_pegawai');
             $table->timestamps();
 
-            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
             $table->foreign('id_penitip')->references('id_penitip')->on('penitips')->onDelete('cascade');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
+            
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penjualans');
+        Schema::dropIfExists('penitipans');
     }
 };

@@ -9,9 +9,9 @@ class Pengiriman extends Model
     protected $table = 'pengiriman';
 
     protected $fillable = [
-        'id',
+        'id_pengiriman',
         'id_jadwal',
-        'id_penjualan',
+        'no_penjualan',
         'status',
     ];
 
@@ -21,10 +21,10 @@ class Pengiriman extends Model
     ];
 
     public function jadwal(){
-        return $this->belongsTo(Jadwal::class,'id_jadwal','id');
+        return $this->belongsTo(Jadwal::class,'id_jadwal','id_jadwal');
     }
 
     public function penjualan(){
-        return $this->belongsTo(Penjualan::class,'id_penjualan','id');
+        return $this->belongsTo(Penjualan::class,'no_penjualan','no_penjualan');
     }
 }

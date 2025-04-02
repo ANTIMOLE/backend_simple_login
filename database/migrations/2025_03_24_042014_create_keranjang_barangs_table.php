@@ -11,20 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ratings', function (Blueprint $table) {
-            $table->id();
+        Schema::create('keranjang_barangs', function (Blueprint $table) {
+            $table->id('id_keranjang_barang');
+            $table->foreignId('id_keranjang')->constrained('keranjangs')->onDelete('cascade');
             $table->string('kode_barang');
-            $table->string('id_penitip');
-            $table->string('id_pelanggan');
-
-            $table->integer('value');
-            $table->timestamps();
-
             $table->foreign('kode_barang')->references('kode_barang')->on('barangs')->onDelete('cascade');
-
-            $table->foreign('id_penitip')->references('id_penitip')->on('penitips')->onDelete('cascade');
-
-            $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggans')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('keranjang_barangs');
     }
 };

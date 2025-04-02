@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pegawai extends Model
 {
-    protected $table = 'pegawai';
+    protected $table = 'pegawais';
 
     protected $fillable = [
-        'id',
+        'id_pegawai',
         'nama',
         'email',
+        'password',
         'tanggal_lahir',
         'noTelp',
-        'created_at',
-        'updated_at',
+        'id_jabatan',
     ];
 
     protected $hidden = [
@@ -23,5 +23,19 @@ class Pegawai extends Model
         'updated_at',
     ];
 
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'id_jabatan', 'id_jabatan');
+    }
+    public function penitipan()
+    {
+        return $this->hasMany(Penitipan::class, 'id_pegawai', 'id_pegawai');
+    }
+
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class, 'id_pegawai', 'id_pegawai');
+    }
 
 }

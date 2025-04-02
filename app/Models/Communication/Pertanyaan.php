@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pertanyaan extends Model
 {
     protected $fillable = [
-        'id',
+        'id_pertanyaan',
+        'id_pelanggan',
         'id_forum',
-        'pertanyaan',
+        'text_pertanyaan',
     ];
 
     protected $hidden = [
@@ -23,5 +24,13 @@ class Pertanyaan extends Model
 
     public function jawaban(){
         return $this->hasMany(Jawaban::class,'id_pertanyaan','id');
+    }
+
+    public function pelanggan(){
+        return $this->belongsTo(Pelanggan::class,'id_pelanggan','id_pelanggan');
+    }
+
+    public function pegawai(){
+        return $this->belongsTo(Pegawai::class,'id_pegawai','id_pegawai');
     }
 }

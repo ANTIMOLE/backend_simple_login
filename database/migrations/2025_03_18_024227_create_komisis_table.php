@@ -12,12 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('komisis', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('id_pegawai')->references('id')->on('pegawais');
-            $table->foreign('id_penjualan')->references('id')->on('penjualans');
-            $table->foreign('kode_barang')->references('id')->on('barangs');
+            $table->id('id_komisi');
+            $table->string('id_pegawai');
+            $table->string('no_penjualan');
+            $table->string('kode_barang');
+
+            $table->string('id_komisi')->unique();
             $table->double('komisi');
             $table->timestamps();
+
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
+            $table->foreign('no_penjualan')->references('no_penjualan')->on('penjualans')->onDelete('cascade');
+            $table->foreign('kode_barang')->references('kode_barang')->on('barangs')->onDelete('cascade');
         });
     }
 

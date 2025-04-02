@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Jawaban extends Model
 {
     protected $fillable = [
-        'id',
-        'id_forum',
+        'id_jawaban',
+        'id_pegawai',
         'id_pertanyaan',
-        'jawaban',
+        'text_jawaban',
     ];
 
     protected $hidden = [
@@ -18,11 +18,13 @@ class Jawaban extends Model
         'updated_at'
     ];
 
-    public function forum(){
-        return $this->belongsTo(Forum::class,'id_forum','id');
-    }
+    
 
     public function pertanyaan(){
         return $this->belongsTo(Pertanyaan::class,'id_pertanyaan','id');
+    }
+
+    public function pegawai(){
+        return $this->belongsTo(Pegawai::class,'id_pegawai','id_pegawai');
     }
 }

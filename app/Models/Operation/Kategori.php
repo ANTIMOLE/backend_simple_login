@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    protected $table = 'kategori';
+    protected $table = 'kategoris';
 
     protected $fillable = [
-        'id',
-        'nama',
+        'id_kategori',
+        'nama_kategori',
     ];
 
     protected $hidden = [
@@ -19,6 +19,10 @@ class Kategori extends Model
     ];
 
     public function barang(){
-        return $this->hasMany(Barang::class, 'id_kategori', 'id');
+        return $this->hasMany(Barang::class, 'id_kategori', 'id_kategori');
+    }
+
+    public function barangdonasi(){
+        return $this->hasMany(Barang_Donasi::class, 'id_kategori', 'id_kategori');
     }
 }
