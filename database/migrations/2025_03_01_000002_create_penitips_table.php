@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('penitips', function (Blueprint $table) {
             $table->string('id_penitip')->primary();
             $table->string('nama');
-            $table->string('nomer_induk_penduduk');
+            $table->string('nomer_induk_penduduk')->unique();
+            $table->string('foto_ktp');
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('poin')->default(0);
+            $table->double('saldo')->default(0.0);
             $table->double('rating_total')->default(0.0);
             $table->integer('barang_terjual')->default(0);
             $table->date('tanggal_lahir');

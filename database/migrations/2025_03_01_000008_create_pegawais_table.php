@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('id_jabatan');
-            $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatans')->onDelete('cascade');
+            $table->foreignId('id_jabatan')->constrained('jabatans', 'id_jabatan')->onDelete('cascade');
+
             
             $table->date('tanggal_lahir');
             $table->string('noTelp');

@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id('id_klaim');
             $table->string('id_pelanggan');
             $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggans')->onDelete('cascade');
-            $table->foreignId('id_merchandise')->constrained('merchandises')->onDelete('cascade');
+            $table->foreignId('id_merchandise')->constrained('merchandises','id_merchandise')->onDelete('cascade');
             $table->double('total_poin');
             $table->tinyInteger('status');
+            $table->date('tanggal_klaim')->nullable();
             $table->timestamps();
 
             

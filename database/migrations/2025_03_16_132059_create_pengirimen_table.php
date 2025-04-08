@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('pengirimans', function (Blueprint $table) {
             $table->id('id_pengiriman');
-            $table->integer('id_jadwal')->constrained('jadwals')->onDelete('cascade');
-            $table->integer('id_penjualan')->constrained('penjualans')->onDelete('cascade');
+            $table->foreignId('id_jadwal')->constrained('jadwals','id_jadwal')->onDelete('cascade');
+            $table->foreignId('no_penjualan')->constrained('penjualans','no_penjualan')->onDelete('cascade');
+            $table->string('id_pegawai');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
             $table->tinyInteger('status');
-            $table->timestamps();
-
-           
+            $table->timestamps();  
         });
     }
 

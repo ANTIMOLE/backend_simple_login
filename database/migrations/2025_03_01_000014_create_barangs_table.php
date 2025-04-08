@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->string('kode_barang')->primary();
             $table->string('id_penitipan');
-            $table->integer('id_kategori');
+            $table->foreignId('id_kategori')->constrained('kategoris','id_kategori')->onDelete('cascade');
             $table->string('nama');
             $table->string('ukuran');
-            $table->text('deskripsi');
+            $table->text(column: 'deskripsi');
             $table->string('hunter');
             $table->string('gambar');
             $table->double('berat');
             $table->string('kondisi');
+            $table->date('tanggal_garansi')->nullable();
             $table->integer('masa_penitipan');
             $table->tinyInteger('perpanjangan');
             $table->double('harga'); 
@@ -29,7 +30,7 @@ return new class extends Migration
             $table->timestamps();
             
             $table->foreign('id_penitipan')->references('id_penitipan')->on('penitipans')->onDelete('cascade');
-            $table->foreign('id_kategori')->references('id_kategori')->on('kategoris')->onDelete('cascade');
+            
         });
 
 

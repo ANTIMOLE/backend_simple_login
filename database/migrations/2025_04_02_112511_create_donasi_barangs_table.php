@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_donasi_barang');
             $table->string('id_barang_donasi');
             $table->foreign('id_barang_donasi')->references('id_barang_donasi')->on('barang__donasis')->onDelete('cascade');
-            $table->foreignId('id_donasi')->constrained('donasis')->onDelete('cascade');
+            $table->foreignId('id_donasi')->constrained('donasis','id_donasi')->onDelete('cascade');
             $table->timestamps();
         });
     }

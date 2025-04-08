@@ -12,6 +12,7 @@ class Pengiriman extends Model
         'id_pengiriman',
         'id_jadwal',
         'no_penjualan',
+        'id_pegawai',
         'status',
     ];
 
@@ -26,5 +27,9 @@ class Pengiriman extends Model
 
     public function penjualan(){
         return $this->belongsTo(Penjualan::class,'no_penjualan','no_penjualan');
+    }
+
+    public function pegawai(){
+        return $this->belongsTo(Pegawai::class,'id_pegawai','id_pegawai');
     }
 }

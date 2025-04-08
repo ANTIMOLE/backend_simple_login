@@ -24,6 +24,7 @@ class Barang extends Model
         'masa_penitipan',
         'perpanjangan',
         'harga',
+        'tanggal_garansi',
         'status',
         'gambar',
     ];

@@ -14,6 +14,7 @@ class Klaim extends Model
         'id_merchandise',
         'total_poin',
         'status',
+        'tanggal_klaim',
     ];
 
     protected $hidden = [
