@@ -13,7 +13,7 @@ class Klaim extends Model
         'id_pelanggan',
         'id_merchandise',
         'total_poin',
-        'status',
+        'status_klaim',
         'tanggal_klaim',
     ];
 

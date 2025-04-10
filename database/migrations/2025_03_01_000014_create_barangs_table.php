@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('masa_penitipan');
             $table->boolean('perpanjangan')->default(0);
             $table->double('harga'); 
-            $table->string('status');
+            $table->string('status')->default('Tersedia');
             $table->date('tanggal_laku')->nullable();
             $table->timestamps();
             

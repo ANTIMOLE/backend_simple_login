@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_pengambilan');
             $table->foreignId('id_jadwal')->constrained('jadwals','id_jadwal')->onDelete('cascade');
             $table->foreignId('no_penjualan')->constrained('penjualans','no_penjualan')->onDelete('cascade');
-            $table->tinyInteger('status')->default(0);
+            $table->string('status')->default('Belum Siap Ambil');
             $table->timestamps();     
         });
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id_pelanggan');
             $table->string('id_penitip');
             $table->string('list_barang');
-            $table->string('status');
+            $table->string('status')->default('Belum Lunas');
             $table->string('tipe');
             $table->string('alamat');
             $table->string('bukti_transfer');

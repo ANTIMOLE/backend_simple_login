@@ -12,7 +12,7 @@ class Alamat extends Model
         'id_alamat',
         'id_pelanggan',
         'detail_alamat',
-        'status',
+        'default',
     ];
 
     protected $hidden = [
