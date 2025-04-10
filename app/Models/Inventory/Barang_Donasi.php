@@ -10,7 +10,7 @@ class Barang_Donasi extends Model
 
     protected $fillable = [
         'id_barang_donasi',
-        'id_kategori',
+        'id_subkategori',
         'id_penitip',
         'gambar',
         'nama',
@@ -25,9 +25,9 @@ class Barang_Donasi extends Model
         'updated_at',
     ];
 
-    public function kategori()
+    public function subkategori()
     {
-        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+        return $this->belongsTo(Subkategori::class, 'id_subkategori', 'id_subkategori');
     }
 
     public function donasibarang()
