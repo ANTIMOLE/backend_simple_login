@@ -24,9 +24,10 @@ return new class extends Migration
             $table->string('kondisi');
             $table->date('tanggal_garansi')->nullable();
             $table->integer('masa_penitipan');
-            $table->tinyInteger('perpanjangan');
+            $table->boolean('perpanjangan')->default(0);
             $table->double('harga'); 
             $table->string('status');
+            $table->date('tanggal_laku')->nullable();
             $table->timestamps();
             
             $table->foreign('id_penitipan')->references('id_penitipan')->on('penitipans')->onDelete('cascade');

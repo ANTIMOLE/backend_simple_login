@@ -11,7 +11,6 @@ class Penitipan extends Model
     protected $fillable = [
         'id_penitipan',
         'list_barang',
-        'status_penitipan',
         'id_penitip',
         'id_pegawai'
     ];

@@ -10,6 +10,7 @@ class Penjualan extends Model
 
     protected $fillable = [
         'no_penjualan',
+        'no_nota',
         'total',
         'list_barang',
         'bukti_transfer',
@@ -18,6 +19,7 @@ class Penjualan extends Model
         'tipe',
         'id_pelanggan',
         'id_penitip',
+        'tanggal_lunas'
         
     ];
 

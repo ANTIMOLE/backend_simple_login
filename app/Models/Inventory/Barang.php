@@ -27,6 +27,7 @@ class Barang extends Model
         'tanggal_garansi',
         'status',
         'gambar',
+        'tanggal_laku'
     ];
 
     protected $hidden = [

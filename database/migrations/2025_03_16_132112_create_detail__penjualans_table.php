@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('detail__penjualans', function (Blueprint $table) {
             $table->id('id_detail_penjualan');
             $table->foreignId('no_penjualan')->constrained('penjualans','no_penjualan')->onDelete('cascade');
-            $table->string('no_nota');
+            $table->string('kode_barang');
+            $table->foreign('kode_barang')->references('kode_barang')->on('barangs')->onDelete('cascade');
+            $table->double('bonus');
             $table->double('komisi');
             $table->double('total_transaksi');
             $table->double('total_penitip');

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('organisasis', function (Blueprint $table) {
             $table->string('id_organisasi')->primary();
             $table->string('nama');
+            $table->string('nama_penerima');
             $table->string('email')->unique();
             $table->string('alamat');
             $table->boolean('verified');

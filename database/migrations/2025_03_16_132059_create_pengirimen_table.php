@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('no_penjualan')->constrained('penjualans','no_penjualan')->onDelete('cascade');
             $table->string('id_pegawai');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();  
         });
     }

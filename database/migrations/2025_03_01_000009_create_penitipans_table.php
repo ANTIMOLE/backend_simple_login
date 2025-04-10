@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('penitipans', function (Blueprint $table) {
             $table->string('id_penitipan')->primary();
             $table->string('list_barang');
-            $table->string('status_penitipan');
             $table->string('id_penitip');
             $table->string('id_pegawai');
             $table->timestamps();

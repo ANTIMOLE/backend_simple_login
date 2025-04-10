@@ -11,6 +11,7 @@ class Barang_Donasi extends Model
     protected $fillable = [
         'id_barang_donasi',
         'id_kategori',
+        'id_penitip',
         'gambar',
         'nama',
         'ukuran',

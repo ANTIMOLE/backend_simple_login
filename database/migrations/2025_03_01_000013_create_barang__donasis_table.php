@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('barang__donasis', function (Blueprint $table) {
             $table->string('id_barang_donasi')->primary();
             $table->foreignId('id_kategori')->constrained('kategoris','id_kategori')->onDelete('cascade');
+            $table->string('id_penitip');
             $table->string('nama');
             $table->double('ukuran');
             $table->string('deskripsi');
             $table->string('gambar');
             $table->double('berat');
+            $table->boolean('status_donasi')->default(0);
             $table->timestamps();
 
            

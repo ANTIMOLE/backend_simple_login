@@ -11,8 +11,9 @@ class Detail_Penjualan extends Model
     protected $fillable = [
         'id_detail_penjualan',
         'id_penjualan',
-        'no_nota',
+        'kode_barang',
         'komisi',
+        'bonus',
         'total_transaksi',
         'total_penitip',
         'total_reusemart',

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('no_penjualan')->constrained('penjualans','no_penjualan')->onDelete('cascade');
             $table->string('kode_barang');
             $table->double('komisi');
+            $table->double('komisi_reusemart');      
+            $table->double('bonus');
             $table->timestamps();
 
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');

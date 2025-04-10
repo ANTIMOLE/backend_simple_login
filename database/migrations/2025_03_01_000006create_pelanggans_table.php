@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('noTelp');
             $table->string('password');
             $table->date('tanggal_lahir');
-            $table->integer('poin');
-            $table->tinyInteger('verified');
-            $table->date('verified_at');
+            $table->integer('poin')->default(0);
+            $table->boolean('verified')->default(0);
+            $table->date('verified_at')->nullable()->default(null);
             $table->timestamps();
 
             
