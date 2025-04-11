@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-class UserController extends Controller
+class PelangganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         try{
-            $data = User::all();
+            $data = Pelanggan::all();
             return response() -> json([
                 'status' => 'success',
                 'message' => 'Data Retrive Successfully',
@@ -23,7 +23,7 @@ class UserController extends Controller
 
             ],200);
         }catch(\Exception $e){
-            \Log::error('Error in UserController@index: ' . $e->getMessage());
+            \Log::error('Error in PelangganController@index: ' . $e->getMessage());
             return response()-> json([
                 'status' => 'error',
                 'message' => 'Failed to Retrive Data',
@@ -34,7 +34,7 @@ class UserController extends Controller
 
     public function showId($id){
         try{
-            $data = User::find($id);
+            $data = Pelanggan::find($id);
             return response()-> json([
                 'status' => 'success',
                 'message' => 'Data Retrive Successfully',
@@ -55,12 +55,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|unique:users,name',
-            'email' => 'required|string|unique:users,email',
+            'name' => 'required|string|unique:pelanggans,name',
+            'email' => 'required|string|unique:Pelanggans,email',
             'password' => 'required|string'
         ]);
 
-        $user = user::create([
+        $Pelanggan = Pelanggan::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
@@ -68,8 +68,8 @@ class UserController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'User Created Successfully',
-            'data' => $user
+            'message' => 'Pelanggan Created Successfully',
+            'data' => $Pelanggan
         ],200);
     }
 
@@ -79,30 +79,30 @@ class UserController extends Controller
             'password' => 'required|string'
         ]);
 
-        $user = User::where('name',$request->name)->first();
+        $Pelanggan = Pelanggan::where('name',$request->name)->first();
 
-        if(!$user || !Hash::check($request->password, $user->password)){
+        if(!$Pelanggan || !Hash::check($request->password, $Pelanggan->password)){
             return response()->json([
                 'status' => 'error',
                 'message' => 'Invalid Credentials'
             ],401);
         }
 
-        $token = $user->createToken('token')->plainTextToken;
+        $token = $Pelanggan->createToken('token')->plainTextToken;
 
         return response()->json([
             'status' => 'success',
-            'message' => 'User Logged In Successfully',
+            'message' => 'Pelanggan Logged In Successfully',
             'token' => $token,
-            'data' => $user->name,
-            'id' => $user->id
+            'data' => $Pelanggan->name,
+            'id' => $Pelanggan->id
         ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(Pelanggan $Pelanggan)
     {
         //
     }
@@ -119,43 +119,43 @@ public function update(Request $request, $id)
         Log::info("Update Request Received", ['data' => $request->all(), 'id' => $id]);
 
        $request->validate([
-            'name' => 'required|string|unique:users,name,' . $id,
-            'email' => 'required|string|unique:users,email,' . $id,
+            'name' => 'required|string|unique:Pelanggans,name,' . $id,
+            'email' => 'required|string|unique:Pelanggans,email,' . $id,
             'password' => 'required|string'
         ]);
 
         Log::info("Validation Passed", ['validated' => $request]);
 
-        $user = User::find($id);
-        if (!$user) {
-            Log::error("User Not Found", ['id' => $id]);
+        $Pelanggan = Pelanggan::find($id);
+        if (!$Pelanggan) {
+            Log::error("Pelanggan Not Found", ['id' => $id]);
             return response()->json([
                 'status' => 'error',
-                'message' => 'User not found'
+                'message' => 'Pelanggan not found'
             ], 404);
         }
 
-        Log::info("User Found", ['user' => $user]);
+        Log::info("Pelanggan Found", ['Pelanggan' => $Pelanggan]);
 
-        $user->update([
+        $Pelanggan->update([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
 
-        Log::info("User Updated Successfully", ['user' => $user]);
+        Log::info("Pelanggan Updated Successfully", ['Pelanggan' => $Pelanggan]);
 
         return response()->json([
             'status' => 'success',
-            'message' => 'User Updated Successfully',
-            'data' => $user
+            'message' => 'Pelanggan Updated Successfully',
+            'data' => $Pelanggan
         ]);
     } catch (\Exception $e) {
         Log::error("Update Failed", ['error' => $e->getMessage()]);
 
         return response()->json([
             'status' => 'error',
-            'message' => 'Failed to Update User',
+            'message' => 'Failed to Update Pelanggan',
             'data error' => $e->getMessage()
         ], 500);
     }
@@ -169,25 +169,25 @@ public function update(Request $request, $id)
     {
         try{
 
-            // Cek apakah user ditemukan sebelum delet
+            // Cek apakah Pelanggan ditemukan sebelum delet
 
-        $user = User::find($id);
-        if(!$user){
+        $Pelanggan = Pelanggan::find($id);
+        if(!$Pelanggan){
             return response()->json([
                 'status' => 'error',
-                'message' => 'User Not Found'
+                'message' => 'Pelanggan Not Found'
             ],404);
         }
 
-        $user->delete();
+        $Pelanggan->delete();
             return response()->json([
                 'status' => 'success',
-                'message' => 'User Deleted Successfully'
+                'message' => 'Pelanggan Deleted Successfully'
             ],200);
         }catch(\Exception $e){
             return response()->json([
                 'status' => 'error',
-                'message' => 'Failed to Delete User',
+                'message' => 'Failed to Delete Pelanggan',
                 'data error' => $e
             ],500);
         }
